@@ -1,0 +1,97 @@
+print("welcome to quiz game")
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+A = input("Are you ready? (yes/no): ")
+if A != "yes":
+    quit()
+else:
+  print("lets play")
+print("------INSTRUCTIONS------")
+print("1.The quiz game consists of 5 questions.")
+
+print("2.Each correct answers earns the player 1 point.There are no negative marking")
+print("3.Players must select the letter corresponding to their chosen answer (A, B, C, or D) and announce their choice before the time runs out. Once an answer is submitted, it cannot be changed.")
+print("4.The quiz game is meant to be a friendly competition, fostering fun and learning.")
+
+
+questions = ("WHO DEVELOPED PYTHON PROGRAMMING?: ",
+             "WHICH TYPE OF PROGRAMMING DOES PYTHON SUPPORT?: ",
+             "WHICH KEYWORD IS USED FOR FUNCTION IN PYTHON LANGUAGE?: ",
+             "WHAT DOES PIP STAND FOR IN PYTHON?: ",
+             "WHICH OF THE FOLLOWING FUNCTIONS IS A BUILT-IN FUNCTION IN PYTHON?: ")
+options = (("A. Wick Van Rossum", "B. Rasmus Lerdorf", "C. Guido Van Rossum", "D. Nine Stom"),
+           ("A. Object oriented programming", "B. structured programming", "C. functional programming", "D. All of the above"),
+           ("A. Function", "B. def", "C. Fun", "D. Define"),
+           ("A. Pip Installs Python", "B. Pip Installs Packages", "C. Preferred Installer Program", "D. None"),
+           ("A. factorial()", "B. print()", "C. seed()", "D. sqrt()"))
+
+reasons =(("Python language is designed by a Dutch programmer Guido Van Rossum in the Netherlands."),
+          ("Python is an interpreted programming language, which supports object-oriented, structured, and functional programming."),
+          ("The 'def' keyword is used to create (or define) a function in Python."),
+          ("PIP stands for 'Preferred Installer Program'. It is a package manager for Python."),
+          ("The 'print()' function is a built-in function which prints a value directly to the system output."))
+answers = ("C", "D", "B", "C", "B")
+guesses = []
+score = 0
+question_num = 0
+
+for question in questions:
+    print("******************")
+    print(question)
+    for option in options[question_num]:
+        print(option)
+
+    guess = input("Enter (A, B, C, D): ").upper()
+    guesses.append(guess)
+    if guess == answers[question_num]:
+        score += 1
+        print("YEYY YOU ARE CORRECT!")
+    else:
+        print("OOPS!! INCORRECT!")
+        print(f"{answers[question_num]} is the correct answer")
+    print("Explanation:")
+    print(reasons[question_num])
+    question_num +=1
+print("----------------------")
+print("       RESULTS        ")
+print("----------------------")
+
+print("answers: ", end="")
+for answer in answers:
+    print(answer, end=" ")
+print()
+
+print("guesses: ", end="")
+for guess in guesses:
+    print(guess, end=" ")
+print()
+
+score = int(score / len(questions) * 100)
+print(f"well done!! {name}")
+print(f"Your score is: {score}%")
+if(score>80):
+  print("your grade is A")
+  print("outstanding perfpmance")
+elif(60<score>80):
+  print("your grade is B")
+  print("very good performance")
+elif(40<score>60):
+  print("your grade is C")
+  print("good")
+elif(20<score>40):
+  print("your grade is D")
+  print("better luck next time")
+else:
+  print("try again!!!!!!")
+
+play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+
+if play_again != "yes":
+        print("Thank you for playing! Goodbye!")
+        
+else:
+        print("Let's play again!")
+        
+        guesses = []
+        score = 0
+        question_num = 0
